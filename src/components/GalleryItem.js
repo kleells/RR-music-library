@@ -1,3 +1,5 @@
+// withContext2: components now accepts props
+
 import React, { useState } from 'react'
 
 function GalleryItem(props){
