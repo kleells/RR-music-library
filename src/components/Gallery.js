@@ -1,18 +1,22 @@
+// withContext2: component is simplified and access to the data from context is added
+
+import React, { useContext } from 'react'
+import { DataContext } from '../context/DataContext'
 import GalleryItem from './GalleryItem'
 
-function Gallery(props){
-    // renders a GalleryItem for each item in our data array
-    // .map function iterates over the array and generates components that are displayed in the return below
-    const display = props.data.map((item, index) => {
+const Gallery = () => {
+    // creates the data variable passed into app.js
+    const data = useContext(DataContext)
+
+    const display = data.map((item, index) => {
         return (
-            <GalleryItem item={item} key={index} />
+            <GalleryItem key={index} item={item} />
         )
     })
 
     return (
-        // displays the item rendered
         <div>
-        {display}
+            {display}
         </div>
     )
 }

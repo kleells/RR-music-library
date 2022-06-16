@@ -1,3 +1,5 @@
+// withContext2: searchBar will access the searchTerm variable from context
+
 import React, { useState } from 'react'
 
 function SearchBar(props){
