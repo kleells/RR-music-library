@@ -1,41 +1,43 @@
 import './App.css'
-import React, { useEffect, useState, Fragment } from 'react'
+import React, { useEffect, useState, Fragment, Suspense } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Gallery from './components/Gallery'
 import SearchBar from './components/SearchBar'
 import AlbumView from './components/AlbumView'
 import ArtistView from './components/ArtistView'
+import { createResource as fetchData } from './helper'
+import Spinner from './components/Spinner'
 
-function App() {
-    let [search, setSearch] = useState('')
+function App(){
+  // state components
+    let [searchTerm, setSearchTerm] = useState("")
     let [message, setMessage] = useState('Search for Music!')
-    let [data, setData] = useState([])
-
-    const API_URL = 'https://itunes.apple.com/search?term='
+    let [data, setData] = useState(null)
 
     useEffect(() => {
-        if(search) {
-            const fetchData = async () => {
-                document.title = `${search} Music`
-                const response = await fetch(API_URL + search)
-                const resData = await response.json()
-                if (resData.results.length > 0) {
-                    return setData(resData.results)
-                } else {
-                    return setMessage('Not Found')
-                }
-            }
-            fetchData()
+        if (searchTerm) {
+          setData(fetchData(searchTerm));
         }
-    }, [search])
+      }, [searchTerm])
     
+    // function to pass down to SearchBar with 2 arguements (event object and search term typed into searchbar)
     const handleSearch = (e, term) => {
         e.preventDefault()
-        setSearch(term)
+        setSearchTerm(term)
     }
 
+    const renderGallery = () => {
+        if (data) {
+          return (
+            <Suspense fallback={<Spinner />}>
+              <Gallery data={data} />
+            </Suspense>
+          );
+        }
+      };
+
     return (
-      <div>
+      <div className="App">
       {/* {message} moved outside of the Router in order to view it on any page being viewed */}
       {message}
           {/* with_router: put components in to Router element */}
@@ -45,7 +47,7 @@ function App() {
                   <Route path="/" element={
                       <Fragment>
                           <SearchBar handleSearch = {handleSearch}/>
-                          <Gallery data={data} />
+                          {renderGallery()}
                       </Fragment>
                   } />
                   {/* with_router: prescribe parameter values using : character */}
@@ -55,7 +57,6 @@ function App() {
           </Router>
       </div>
   )
-  
 }
 
 export default App;
