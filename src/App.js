@@ -1,48 +1,62 @@
-import React, { useEffect, useState } from 'react'
+import './App.css'
+import React, { useEffect, useState, Fragment, Suspense } from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Gallery from './components/Gallery'
 import SearchBar from './components/SearchBar'
+import AlbumView from './components/AlbumView'
+import ArtistView from './components/ArtistView'
+import { createResource as fetchData } from './helper'
+import Spinner from './components/Spinner'
 
 function App(){
   // state components
-    let [search, setSearch] = useState('')
+    let [searchTerm, setSearchTerm] = useState("")
     let [message, setMessage] = useState('Search for Music!')
-    let [data, setData] = useState([])
+    let [data, setData] = useState(null)
 
-    const API_URL = 'https://itunes.apple.com/search?term='
-
-    // the hook
     useEffect(() => {
-      // conditional added to prevent the state from running if there is no search term
-      if(search) {
-        const fetchData = async () => {
-            document.title = `${search} Music`
-            const response = await fetch(API_URL + search)
-            const resData = await response.json()
-            if (resData.results.length > 0) {
-                setData(resData.results)
-            } else {
-                setMessage('Not Found')
-            }
+        if (searchTerm) {
+          setData(fetchData(searchTerm));
         }
-        fetchData()
-      }
-  }, [search])
-  
-  // function to pass down to SearchBar with 2 arguements (event object and search term typed into searchbar)
-  const handleSearch = (e, term) => {
-    e.preventDefault()
-    setSearch(term)
-  }
+      }, [searchTerm])
+    
+    // function to pass down to SearchBar with 2 arguements (event object and search term typed into searchbar)
+    const handleSearch = (e, term) => {
+        e.preventDefault()
+        setSearchTerm(term)
+    }
 
-  return (
-      <div>
-          <SearchBar handleSearch = {handleSearch} />
-          {message}
-          {/* data being sent to Gallery component to be viewed */}
-          <Gallery data={data} />
+    const renderGallery = () => {
+        if (data) {
+          return (
+            <Suspense fallback={<Spinner />}>
+              <Gallery data={data} />
+            </Suspense>
+          );
+        }
+      };
+
+    return (
+      <div className="App">
+      {/* {message} moved outside of the Router in order to view it on any page being viewed */}
+      {message}
+          {/* with_router: put components in to Router element */}
+          <Router>
+              {/* with_router: compenents in Routes will be rendered selectively and Fragment is used to to place more than one component into an element */}
+              <Routes>
+                  <Route path="/" element={
+                      <Fragment>
+                          <SearchBar handleSearch = {handleSearch}/>
+                          {renderGallery()}
+                      </Fragment>
+                  } />
+                  {/* with_router: prescribe parameter values using : character */}
+                  <Route path="/album/:id" element={<AlbumView />} />
+                  <Route path="/artist/:id" element={<ArtistView />} />
+              </Routes>
+          </Router>
       </div>
   )
-
 }
 
-export default App
+export default App;
