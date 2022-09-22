@@ -1,70 +1,78 @@
-# Getting Started with Create React App
+# Music Library for React/Redux Course
+Our goal will be to build a website that will allow a user to search for an artist and see a list of songs.
+A user will be able to click on a song to open a "detail" view of that song.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The itunes API is used to allow users to search keywords, including artist's name
+and song title. The keyword search retrieves data from the API.
+
+This project was forked from https://github.com/HackerUSA-CE/RR-Music-Library main branch.
+# Purpose
+- ✨ To build a music library interface that searches for music and catalogs it, in sort. 
+Allowed author to practice React fundamentals like dataflow(using FETCH and managing state among components).
+- ✨ Name: Music Library
+# Design/look
+     * Styling: React Bootstrap
+     * Colors: Minimal but would like to improve (see Future Tasks)
+     * Images: any pictures are provided by the iTunes API
+
+## Project Wireframe/Structure:
+  * A simple index page with a search bar and prompt to "Search for Music!" Submit and any relevant data will appear.
+  * Clicking on any of the tiles will provide an image and further data pertaining to what was clicked on.
+  * Another click on a link will route user to a page that should load even more details 
+    ^ this route is VERY slow, currently and needs addtional debugging (FUTURE TASK)
+
+---
+### Languages and Tools :
+ - ✨ Front-end: React, Bootstrap & React Bootstrap, CSS
+ - ✨ Back-end: Javascript (MC skeleton)
+ - ✨ Database: iTunes API
+ - ✨ Other concepts: useEffect, useState, importing, DataContext, useContext, useRef()
+
+---
+## ✨ Future Tasks✨
+ - Use CSS/Sass to improve styling
+ - use Python to imporve backend fuctionality (Python was taught after this porject was worked on)
+ - debug slow loading of routes
+
+## ✨ Requirements/useful tools
+* Any Operating System (ie. MacOS X, Linux, Windows)
+* Internet Browser (ie. Google Chrome)
+* Source Code Editor (ie. VSCode)
+* MongoDB Compass/Atlas
+* Postman (for Backend testing if needed)
 
 ## Available Scripts
-
 In the project directory, you can run:
-
 ### `npm start`
-
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
+## 👤 Author(s)
+* Katie Eells: [@kleells](https://github.com/kleells)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 📝 License
+MIT License
 
-### `npm run build`
+Copyright (c) 2022 brentonring
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
