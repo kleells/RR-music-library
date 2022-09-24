@@ -12,7 +12,7 @@ const fetchSearch = async (searchTerm) => {
 // depending on where the promise is in the life cycle.
 // Being that our fetchSearch function returns a promise,
 // We want wrapPromise to take that promise as an argument.
-const wrapPromise = (promise) => {
+const wrapPromise = (promise: any) => {
     // the default state of our promise. We assume it to be pending.
     let status = 'pending'
     // result will store the data we get from the promise.
@@ -48,7 +48,7 @@ const wrapPromise = (promise) => {
 }
 
 // with_suspense: function that packages the above code up and exports it
-export const createResource = (searchTerm) => {
+export const createResource = (searchTerm: any) => {
     return {
         result: wrapPromise(fetchSearch(searchTerm))
     }

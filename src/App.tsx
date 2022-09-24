@@ -21,7 +21,7 @@ function App(){
       }, [searchTerm])
     
     // function to pass down to SearchBar with 2 arguements (event object and search term typed into searchbar)
-    const handleSearch = (e, term) => {
+    const handleSearch = (e: any, term: any) => {
         e.preventDefault()
         setSearchTerm(term)
     }

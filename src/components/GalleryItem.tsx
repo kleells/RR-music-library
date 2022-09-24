@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 // with_router: <Link> fixes "bug" of being sent to a fresh render of web page when searching for artist
 import { Link } from 'react-router-dom'
 
-function GalleryItem(props){
+function GalleryItem(props: any){
     let [view, setView] = useState(false)
 
     const simpleStyle = {
